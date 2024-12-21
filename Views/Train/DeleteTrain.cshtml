@@ -1,0 +1,30 @@
+﻿@model TrainTicketReservationSystem.Models.Train
+
+@{
+    ViewData["Title"] = "Delete Train";
+}
+
+<h2>Delete Train</h2>
+
+<p>Are you sure you want to delete this train?</p>
+
+<table class="table">
+    <tr>
+        <th>Train Name:</th>
+        <td>@Model.TrainName</td>
+    </tr>
+    <tr>
+        <th>Train Number:</th>
+        <td>@Model.TrainNumber</td>
+    </tr>
+    <tr>
+        <th>Train Type:</th>
+        <td>@Model.TrainType</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteTrain" method="post">
+    <input type="hidden" asp-for="TrainId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="GetAllTrains" class="btn btn-secondary">Cancel</a>
+</form>

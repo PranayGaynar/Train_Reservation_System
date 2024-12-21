@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TrainTicketReservationSystem.Models.Payment>
+
+@{
+    ViewData["Title"] = "Payments List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New Payment</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Payment ID</th>
+            <th>Booking PNR</th>
+            <th>Amount</th>
+            <th>Payment Status</th>
+            <th>Payment Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var payment in Model)
+        {
+            <tr>
+                <td>@payment.PaymentId</td>
+                <td>@payment.Booking.PNR</td>
+                <td>@payment.Amount</td>
+                <td>@payment.PaymentStatus</td>
+                <td>@payment.PaymentDate.ToString("MM/dd/yyyy HH:mm")</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = payment.PaymentId })" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="@Url.Action("Details", new { id = payment.PaymentId })" class="btn btn-info btn-sm">Details</a>
+                    <a href="@Url.Action("Delete", new { id = payment.PaymentId })" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

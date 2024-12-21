@@ -1,0 +1,47 @@
+﻿@model TrainTicketReservationSystem.Models.User
+
+@{
+    ViewData["Title"] = "Add New User";
+}
+
+<h1>Add New User</h1>
+
+<form asp-action="AddUser" method="post">
+    <div class="form-group">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control" style="max-width: 150px;" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control form-control-sm" style="max-width: 150px;" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password" class="form-label">Password</label>
+        <input asp-for="Password" class="form-control" style="max-width: 150px;" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+        <input asp-for="PhoneNumber" class="form-control" style="max-width: 150px;" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Role" class="form-label">Role</label>
+        <select asp-for="Role" asp-items="ViewBag.UserRoles" class="form-control" style="max-width: 150px;">
+            <option value="">Select Role</option>
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Add User</button>
+        <a asp-action="GetAllUser" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>

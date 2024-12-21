@@ -1,0 +1,41 @@
+﻿@model TrainTicketReservationSystem.Models.User
+
+@{
+    ViewData["Title"] = "Update User";
+}
+
+<h1>Update User</h1>
+
+<form asp-action="UpdateUser" method="post">
+    @* CSRF Token for security *@
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="UserId" />
+
+    <div class="form-group">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Role" class="form-label">Role</label>
+        <input asp-for="Role" class="form-control" />
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="GetAllUser" class="btn btn-secondary">Cancel</a>
+</form>

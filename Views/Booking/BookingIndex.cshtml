@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TrainTicketReservationSystem.Models.Booking>
+
+@{
+    ViewData["Title"] = "Booking List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New Booking</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.BookingId)</th>
+            <th>@Html.DisplayNameFor(model => model.User.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.TrainRoute.SourceStation)</th>
+            <th>@Html.DisplayNameFor(model => model.TrainRoute.DestinationStation)</th>
+            <th>@Html.DisplayNameFor(model => model.SeatClass)</th>
+            <th>@Html.DisplayNameFor(model => model.PNR)</th>
+            <th>@Html.DisplayNameFor(model => model.Amount)</th>
+            <th>@Html.DisplayNameFor(model => model.IsCancelled)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookingId</td>
+                <td>@item.User.Name</td>
+                <td>@item.TrainRoute.SourceStation</td>
+                <td>@item.TrainRoute.DestinationStation</td>
+                <td>@item.SeatClass</td>
+                <td>@item.PNR</td>
+                <td>@item.Amount</td>
+                <td>@(item.IsCancelled ? "Yes" : "No")</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.BookingId })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = item.BookingId })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
